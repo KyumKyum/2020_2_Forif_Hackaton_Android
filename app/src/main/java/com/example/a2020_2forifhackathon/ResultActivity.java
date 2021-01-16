@@ -1,11 +1,14 @@
 package com.example.a2020_2forifhackathon;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.Arrays;
@@ -39,6 +42,14 @@ public class ResultActivity extends AppCompatActivity {
             }
         });
 
+        imageButtonWrite.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(ResultActivity.this,PostActivity.class);
+                startActivity(intent);
+            }
+        });
+
     }
 
     void updateWeather(String inputText) {
@@ -61,4 +72,5 @@ public class ResultActivity extends AppCompatActivity {
         imageButtonRefresh = findViewById(R.id.imageButtonRefresh);
         imageButtonWrite = findViewById(R.id.imageButtonWrite);
     }
+
 }

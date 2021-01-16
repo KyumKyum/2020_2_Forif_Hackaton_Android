@@ -38,7 +38,7 @@
         app:layout_constraintVertical_bias="0.595" />
 
     <ImageButton
-        android:id="@+id/imageButton3"
+        android:id="@+id/button_save"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:background="#FFFFBE"
@@ -51,7 +51,7 @@
         app:srcCompat="@android:drawable/ic_menu_save" />
 
     <EditText
-        android:id="@+id/editText"
+        android:id="@+id/editText_title"
         android:layout_width="328dp"
         android:layout_height="43dp"
         android:gravity="center_horizontal"
@@ -66,22 +66,22 @@
         app:layout_constraintVertical_bias="0.029" />
 
     <EditText
-        android:id="@+id/editText2"
+        android:id="@+id/editText_writer"
         android:layout_width="104dp"
         android:layout_height="38dp"
+        android:gravity="end"
         android:hint="글쓴이"
-        android:textSize="15sp"
         android:textAlignment="textEnd"
+        android:textSize="15sp"
         app:layout_constraintBottom_toBottomOf="@+id/view"
         app:layout_constraintEnd_toEndOf="@+id/view"
         app:layout_constraintHorizontal_bias="0.947"
         app:layout_constraintStart_toStartOf="@+id/view"
-        app:layout_constraintTop_toBottomOf="@+id/editText"
-        app:layout_constraintVertical_bias="0.015"
-        android:gravity="end" />
+        app:layout_constraintTop_toBottomOf="@+id/editText_title"
+        app:layout_constraintVertical_bias="0.015" />
 
     <EditText
-        android:id="@+id/editText3"
+        android:id="@+id/editText_desc"
         android:layout_width="324dp"
         android:layout_height="313dp"
         android:textSize="20sp"
@@ -93,7 +93,7 @@
         app:layout_constraintVertical_bias="0.564" />
 
     <ImageButton
-        android:id="@+id/imageButton4"
+        android:id="@+id/button_image"
         android:layout_width="40dp"
         android:layout_height="40dp"
         app:layout_constraintBottom_toBottomOf="@+id/view"

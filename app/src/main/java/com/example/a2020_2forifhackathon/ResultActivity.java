@@ -1,41 +1,64 @@
 package com.example.a2020_2forifhackathon;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import java.util.Arrays;
 
 public class ResultActivity extends AppCompatActivity {
+    ImageView imageViewBack;
+    TextView textViewCity, textViewTemp, textViewWeather;
+    ImageButton imageButtonRefresh, imageButtonWrite;
+    Translator translator = null;
+    Weather weather = null;
+    String[] weatherData = {"맑음", "흐림", "비", "눈", "안개"};
+    String[] oldData = {"o1", "o2", "o3"}, newData = {"n1", "n2", "n3"};
+    int[] backgroundIDs = {R.drawable.sunny, R.drawable.cloudy, R.drawable.rainy, R.drawable.snowy, R.drawable.foggy};
+    String inputText = "서울";//인텐트로 받아올 도시
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.layout_result);
 
-        ImageButton imageButtonWrite;
+        findViews();
+        translator = new Translator();
+        weather = new Weather();
+        //inputText=인텐트!!!!!!!!!!!
+        updateWeather(inputText);
 
-        // 검색한 정보 가져오기 (intent)
-        Intent intent = getIntent();
-        String city = intent.getExtras().getString("CITY");
-
-        /*
-        * API에서 city로 검색하고, 검색이 잘못된 경우에 잘못되었다고 메시지를 띄워야합니다.
-        * 변수는 string으로 저장되어 있습니다.
-        */
-
-        // 글작성 intent
-        // to-do 로그인 세션으로, 로그인 안되어있는 상태인 경우 안되게 해야함
-        imageButtonWrite = (ImageButton)findViewById(R.id.imageButtonWrite);
-        imageButtonWrite.setOnClickListener(new View.OnClickListener(){
+        imageButtonRefresh.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(ResultActivity.this, PostActivity.class);
-                startActivity(intent);
+                updateWeather(inputText);
             }
         });
 
+    }
 
+    void updateWeather(String inputText) {
+        String city = translator.translation(inputText);
+        newData = weather.callWeatherData(city);
+        if (newData != null && !Arrays.equals(oldData, newData)) {
+            textViewCity.setText("지금 " + inputText + " 날씨는");
+            textViewTemp.setText(newData[1]);//기온
+            textViewWeather.setText(weatherData[Integer.parseInt(newData[2])]);//날씨 정보 설정
+            imageViewBack.setImageResource(backgroundIDs[Integer.parseInt(newData[2])]);//배경 바꾸기
+            oldData = newData;
+        }
+    }
+
+    void findViews() {
+        imageViewBack = findViewById(R.id.ImageViewBack);
+        textViewCity = findViewById(R.id.textViewCity);
+        textViewTemp = findViewById(R.id.textViewTemperature);
+        textViewWeather = findViewById(R.id.textViewWeather);
+        imageButtonRefresh = findViewById(R.id.imageButtonRefresh);
+        imageButtonWrite = findViewById(R.id.imageButtonWrite);
     }
 }

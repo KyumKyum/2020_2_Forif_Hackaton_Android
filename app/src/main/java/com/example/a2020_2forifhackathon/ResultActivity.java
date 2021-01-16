@@ -7,7 +7,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 
 public class ResultActivity extends AppCompatActivity {
@@ -25,6 +28,19 @@ public class ResultActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.layout_result);
+
+        ///
+        ArrayList<String> list = new ArrayList<>();
+        for (int i = 0; i < 100; i++) {
+            list.add(String.format("TEXT %d", i));
+        }
+        /// 이거 빼고 데이터 넣어야해요!!!  -->  데이터 형식도 바꿔 주셔야 합니다.
+
+        MyAdapter adapter = new MyAdapter(list);
+        RecyclerView recyclerView = findViewById(R.id.rv);
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setAdapter(adapter);
 
         findViews();
         translator = new Translator();

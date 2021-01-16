@@ -10,7 +10,9 @@
     <ImageView
         android:id="@+id/standard"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="-297dp" />
 
     <ImageView
         android:id="@+id/imageView3"
@@ -18,11 +20,13 @@
         android:layout_height="45dp"
         android:layout_marginTop="188dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.474"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/whitebox" />
 
     <EditText
+        android:id="@+id/editCity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:hint="벤쿠버"
@@ -45,6 +49,20 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/TV_userid"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:textColor="#FFFFFF"
+        android:textSize="22sp"
+
+        app:layout_constraintBottom_toTopOf="@+id/imageButton3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewTemperature2"
+        app:layout_constraintVertical_bias="0.962" />
 
     <ImageButton
         android:id="@+id/imageButton2"
